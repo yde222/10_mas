@@ -6,15 +6,17 @@ spring:
   cloud:
     gateway:
       routes:
-        - id:
-          uri: lb://1ST-SERVICE
+        - id: user-service
+          uri: lb://SWCAMP-USER-SERVICE
           predicates:
-            - Path=/first-service/**
+            - Path=/api/v1/user-service/**
           filters:
-            - RewritePath=/first-service/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/user-service/(?<segment>.*), /$\{segment}
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+jwt:
+  secret: LH9QZL8upsPBfuDY+Dkb1kT9DZIIUSuA2u4O6Lfi3mkEfeWtETpVTcR/8SMZdJWn/xNTuCQBE6rBvDXgnVmscQ==
