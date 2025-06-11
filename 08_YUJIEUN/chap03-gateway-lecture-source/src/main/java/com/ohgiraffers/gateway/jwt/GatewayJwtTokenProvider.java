@@ -5,7 +5,6 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
-
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -25,8 +24,6 @@ public class GatewayJwtTokenProvider {
         secretKey = Keys.hmacShaKeyFor(keyBytes);
     }
 
-
-
     public boolean validateToken(String token) {
         try {
             Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token);
@@ -42,9 +39,8 @@ public class GatewayJwtTokenProvider {
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
-        return claims.get("userId",Long.class);
+        return claims.get("userId", Long.class);
     }
-
 
     public String getRoleFromJWT(String token) {
         Claims claims = Jwts.parser()
@@ -52,6 +48,7 @@ public class GatewayJwtTokenProvider {
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
-        return claims.get("role",String.class);
+        return claims.get("role", String.class);
     }
+
 }
