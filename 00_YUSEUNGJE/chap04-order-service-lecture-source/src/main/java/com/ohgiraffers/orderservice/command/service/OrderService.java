@@ -4,7 +4,6 @@ import com.ohgiraffers.orderservice.command.client.UserClient;
 import com.ohgiraffers.orderservice.command.dto.OrderDTO;
 import com.ohgiraffers.orderservice.command.entity.Order;
 import com.ohgiraffers.orderservice.command.repository.OrderRepository;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
