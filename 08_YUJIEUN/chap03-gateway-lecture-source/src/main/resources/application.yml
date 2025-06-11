@@ -1,0 +1,21 @@
+spring:
+   cloud:
+    gateway:
+      server:
+        git:
+          uri: [설정파일이 담긴 깃 레포지토리 경로]
+
+server:
+  port: 8001
+spring:
+  application:
+    name: 1st-service
+eureka:
+  client:
+    # Eureka Server에서 Service Registry를 가져오도록 설정
+    fetch-registry: true
+    # Eureka Server에 해당 인스턴스를 등록하도록 설정
+    register-with-eureka: true
+    # Eureka Server의 기본 URL 설정
+    server-url:
+      defaultZone: http://localhost:8761/eureka
