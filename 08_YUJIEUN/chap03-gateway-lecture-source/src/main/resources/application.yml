@@ -7,32 +7,12 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: 1st-service
-          # uri는 http://ip:port와 같은 형태로도 설정할 수 있지만
-          # 인스턴스의 주소는 변경 가능성이 있으므로 service name으로 설정한다.
-          # lb:// 의 의미는 로드밸러싱 하겠다는 의미
-          uri: lb://1ST-SERVICE
+        - id: user-service
+          uri: lb://SWCAMP-USER-SERVICE
           predicates:
-            # 아래의 경로로 요청이 왔을 때 해당 라우팅 설정을 동작 시킨다.
-            - Path=/first-service/**
-          # 단일 진입점에서 제공되는 설정 값을 통해 다양한 filter 처리를 할 수 있다.
+            - Path=/api/vi/user-service/**
           filters:
-            # /first-service/health 요청을 /health로 재작성하는 필터
-            - RewritePath=/first-service/(?<segment>.*), /$\{segment}
-            # 요청
-            - AddRequestHeader=first-request,first-request-value
-            # 응답
-            - AddResponseHeader=first-response,first-response-value
-        - id: 2st-service
-          uri: lb://2ST-SERVICE
-          predicates:
-            - Path=/second-service/**
-          filters:
-            - RewritePath=/second-service/(?<segment>.*), /$\{segment}
-            - AddRequestHeader=second-request, second-request-value
-            - AddResponseHeader=second-response, second-response-value
-
-
+            - RewritePath=/api/vi/user-service/(?<segment>.*), /$\{segment}
 
 eureka:
   client:
@@ -40,3 +20,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+jwt:
+  secret: LH9QZL8upsPBfuDY+Dkb1kT9DZIIUSuA2u4O6Lfi3mkEfeWtETpVTcR/8SMZdJWn/xNTuCQBE6rBvDXgnVmscQ==
