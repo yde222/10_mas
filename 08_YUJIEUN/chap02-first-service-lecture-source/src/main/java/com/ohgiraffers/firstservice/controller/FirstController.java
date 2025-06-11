@@ -3,9 +3,11 @@ package com.ohgiraffers.firstservice.controller;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+//@RequestMapping("/first-service")
 public class FirstController {
     private Environment environment;
 
