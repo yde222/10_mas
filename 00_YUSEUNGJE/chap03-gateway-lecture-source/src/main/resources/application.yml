@@ -19,12 +19,18 @@ spring:
           filters:
             # /first-service/health 요청을 /health로 재작성하는 필터
             - RewritePath=/first-service/(?<segment>.*), /$\{segment}
+            # 요청 : 'first-request'헤더에 'first-request-value'값을 추가하는 필터
+            - AddRequestHeader=first-request, first-request-value
+            # 응답 : 'first-response'헤더에 'first-response-value'값을 추가하는 필터
+            - AddResponseHeader=first-response, first-response-value
         - id: 2st-service
           uri: lb://2ST-SERVICE
           predicates:
             - Path=/second-service/**
           filters:
             - RewritePath=/second-service/(?<segment>.*), /$\{segment}
+            - AddRequestHeader=second-request, second-request-value
+            - AddResponseHeader=second-response, second-response-value
 
 eureka:
   client:
