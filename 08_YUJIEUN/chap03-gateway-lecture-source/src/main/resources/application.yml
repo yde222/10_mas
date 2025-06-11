@@ -12,6 +12,16 @@ spring:
             - Path=/api/v1/user-service/**
           filters:
             - RewritePath=/api/v1/user-service/(?<segment>.*), /$\{segment}
+            - name: CircuitBreaker
+              args:
+                name: userServiceCB
+                fallbackUri: forward:/fallback/user
+        - id: order-service
+          uri: lb://SWCAMP-ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/order-service/**
+          filters:
+            - RewritePath=/api/v1/order-service/(?<segment>.*), /$\{segment}
 eureka:
   client:
     register-with-eureka: true

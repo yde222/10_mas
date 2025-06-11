@@ -28,7 +28,7 @@ public class FeignClientConfig {
 
                 if(authorizationHeader != null) {       // 토큰을 들고 왔다면
 
-                    *//* Feign client 요청에 "Authorization" 헤더 추가 *//*
+//                     Feign client 요청에 "Authorization" 헤더 추가
                     requestTemplate.header(HttpHeaders.AUTHORIZATION, authorizationHeader);
 
                 }*/
