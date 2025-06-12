@@ -1,5 +1,6 @@
 package com.ohgiraffers.orderservice.config;
 
+import feign.Feign;
 import feign.RequestInterceptor;
 import org.apache.http.HttpHeaders;
 import org.springframework.context.annotation.Bean;
@@ -21,14 +22,14 @@ public class FeignClientConfig {
 
                 // 1. Gateway를 요청하는 상황
                 /* 현재 요청의 Authorization 헤더 추출 (Bearer 토큰) */
-/*                String authorizationHeader = requestAttributes
+              /*  String authorizationHeader = requestAttributes
                         .getRequest()
                         .getHeader(HttpHeaders.AUTHORIZATION);
 
 
                 if(authorizationHeader != null) {       // 토큰을 들고 왔다면
 
-                    *//* Feign client 요청에 "Authorization" 헤더 추가 *//*
+                    // Feign client 요청에 "Authorization" 헤더 추가
                     requestTemplate.header(HttpHeaders.AUTHORIZATION, authorizationHeader);
 
                 }*/
