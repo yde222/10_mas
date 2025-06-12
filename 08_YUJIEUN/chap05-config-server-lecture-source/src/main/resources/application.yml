@@ -1,6 +1,5 @@
 server:
-  port:
-    8888
+  port: 8888
 spring:
   application:
     name: config-server
@@ -8,4 +7,4 @@ spring:
     config:
       server:
         git:
-          uri: file:/Users/yudaeun/dev/config
+          uri: file:C:/config
